@@ -46,7 +46,9 @@ Airframes = {
             ["SA342M"] = true,
             ["Ka-50"] = true,
             ["Ka-50_3"] = true,
-        }
+        },
+        carrier = {
+        },
     },
     [2] = {
         main = {
@@ -82,6 +84,9 @@ Airframes = {
             ["OH58D"] = true,
             ["AH-64D_BLK_II"] = true,
             ["CH-47Fbl1"] = true,
+        },
+        carrier = {
+            ["F-14A-95-GR"] = true
         }
     }
 }
@@ -94,7 +99,6 @@ ForwardAirbases = {
     }
 }
 IgnoreAirbases = {
-    ["CV59"] = true,
     ["LHA-1"] = true,
 }
 FARPAirfields = {
@@ -102,6 +106,9 @@ FARPAirfields = {
     [2] = {},
 }
 Carriers = {
-    [1] = {},
-    [2] = {},
+    [1] = {
+    },
+    [2] = {
+        ["CV59"] = true
+    },
 }
