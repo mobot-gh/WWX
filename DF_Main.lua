@@ -2053,11 +2053,16 @@ function dfc.respawnLoop()
         else
             groupDead = true
         end
-        if groupDead and not SBLOCKER.blockedGroups[groupName] then
+        if groupDead then
             env.info("Respawn group " .. groupName .. " is dead, respawn time is " .. respawnTime, false)
-            env.info("blockedGroups: " .. Utils.dump(SBLOCKER.blockedGroups), false)
-            timer.scheduleFunction(dfc.respawnRespawnGroup, {groupName = groupName, respawnTime = respawnTime}, timer:getTime() + respawnTime)
-            RESPAWNGROUPS[groupName] = nil
+            if not SBLOCKER then
+                timer.scheduleFunction(dfc.respawnRespawnGroup, {groupName = groupName, respawnTime = respawnTime}, timer:getTime() + respawnTime)
+                RESPAWNGROUPS[groupName] = nil
+            elseif not SBLOCKER.blockedGroups[groupName] then
+                env.info("blockedGroups: " .. Utils.dump(SBLOCKER.blockedGroups), false)
+                timer.scheduleFunction(dfc.respawnRespawnGroup, {groupName = groupName, respawnTime = respawnTime}, timer:getTime() + respawnTime)
+                RESPAWNGROUPS[groupName] = nil
+            end
         end
     end
     timer.scheduleFunction(dfc.respawnLoop, nil, timer:getTime() + 10)
