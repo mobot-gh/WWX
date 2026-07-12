@@ -131,6 +131,7 @@ function BattleControl.getClosestBp(location)
             distance = distanceToBp
         end
     end
+    env.info("Closest BP is BP-"..closestBp.." at a distance of "..distance, false)
     return closestBp, distance
 end
 function BattleControl.getNearestDepotFromBP(bpId, c)
